@@ -13,6 +13,7 @@
 
 <div class="mapSelectorDiv">
     <select class="mapSelector" name="Maps" id="mapSelectionDropdown">
+        <option id="selectMap" value="select">Select Map</option>
         <option id="clubhouseDropdown" value="clubhouse">Club House</option>
         <option id="bankDropdown" value="bank">Bank</option>
         <option id="borderDropdown" value="border">Border</option>
@@ -309,8 +310,6 @@ const oregonDropdown = document.getElementById("oregonDropdown")
 const coastlineDropdown = document.getElementById("coastlineDropdown")
 const themeparkDropdown = document.getElementById("themeparkDropdown")
 
-let mapArray = clubImages
-
 
 mapSelections.addEventListener("change", function(){
     if(bankDropdown.selected === true){
@@ -353,11 +352,11 @@ lastRandomNumber2 =
 lastRandomNumber3 =
 lastRandomNumber4 =
 lastRandomNumber5 =   
-correctAnswer1 = ""
-correctAnswer2 = ""
-correctAnswer3 = ""
-correctAnswer4 = ""
-correctAnswer5 = ""
+correctAnswer1 = "N/A"
+correctAnswer2 = "N/A"
+correctAnswer3 = "N/A"
+correctAnswer4 = "N/A"
+correctAnswer5 = "N/A"
 
 window.addEventListener('load', (e) =>{
     start()
@@ -374,9 +373,11 @@ body.addEventListener("keydown", (key) =>{
 
 
 function start(){
-    correctAnswer1 = ""
-    correctAnswer2 = ""
-    correctAnswer3 = ""
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
     inputBox.value = null;
     randomNumber = Math.floor(Math.random() * mapArray.length)
     if(randomNumber === lastRandomNumber1){
@@ -398,7 +399,6 @@ function start(){
 
 
 }
-
 
 
 function checkNumberClub(){
@@ -848,18 +848,48 @@ function checkNumberBorder(){
 
 }
 
+function checkNumberKanal(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+}
+
+function checkNumberOregon(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+}
+
+function checkNumberCoastline(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+}
+
+function checkNumberThemepark(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+}
+
+
 function skip(){
-    window.alert(`The correct answer was: ${correctAnswer1} / ${correctAnswer2} / ${correctAnswer3}`)
+    window.alert(`The correct answer was one of the following: \n 1. ${correctAnswer1} \n 2. ${correctAnswer2} \n 3. ${correctAnswer3} \n 4. ${correctAnswer4} \n 5. ${correctAnswer5}`)
     start();
 }
 
 
 function checkAnswer(){
+    if(inputBox.value.toLowerCase() == "None"){
+        inputBox.value = null;
+        console.log("Input box = None")
+    }
     if(inputBox.value.toLowerCase() == correctAnswer1 || inputBox.value.toLowerCase() == correctAnswer2 || inputBox.value.toLowerCase() == correctAnswer3 || inputBox.value.toLowerCase() == correctAnswer4 || inputBox.value.toLowerCase() == correctAnswer5  ){
         score++
         scorePrinter.innerHTML = `Score: ${score}`
         start();
     } else {
+        console.log("Wrong answer")
     }
 }
 
