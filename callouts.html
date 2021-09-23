@@ -17,6 +17,8 @@
         <option id="bankDropdown" value="bank">Bank</option>
         <option id="borderDropdown" value="border">Border</option>
         <option id="kanalDropdown" value="kanal">Kanal</option>
+        <option id="oregonDropdown" value="oregon">Oregon</option>
+        <option id="coastlineDropdown" value="coastline">Coastline</option>
         <option id="themeparkDropdown" value="themepark">Theme Park</option>
       </select>
 </div>
@@ -269,6 +271,8 @@ let mapSelections = document.getElementById("mapSelectionDropdown")
 const clubhouseDropdown = document.getElementById("clubhouseDropdown")
 const bankDropdown = document.getElementById("bankDropdown")
 const borderDropdown = document.getElementById("borderDropdown")
+const oregonDropdown = document.getElementById("oregonDropdown")
+const coastlineDropdown = document.getElementById("coastlineDropdown")
 
 let mapArray = clubImages
 
@@ -288,6 +292,14 @@ mapSelections.addEventListener("change", function(){
     }
     if(kanalDropdown.selected === true){
         mapArray = kanalImages;
+        start();
+    }
+    if(oregonDropdown.selected === true){
+        mapArray = oregonImages;
+        start();
+    }
+    if(coastlineDropdown.selected === true){
+        mapArray = coastlineImages;
         start();
     }
 })
