@@ -385,7 +385,7 @@ function start(){
     } else{
         lastRandomNumber1 = randomNumber
         document.getElementById("imagePrinter").src = mapArray[randomNumber]
-        console.log(randomNumber)
+        console.log(`Image ID: ${randomNumber}`)
         if(clubhouseDropdown.selected === true){
             checkNumberClub()
         }
@@ -919,6 +919,8 @@ function checkNumberKanal(){
     }
     if(randomNumber == 15){
         correctAnswer1 = "lounge"
+        correctAnswer2 = "games room"
+        correctAnswer3 = "game room"
     }
     if(randomNumber == 16){
         correctAnswer1 = "lounge"
@@ -937,6 +939,7 @@ function checkNumberKanal(){
         correctAnswer2 = "model"
     }
     if(randomNumber == 20){
+        correctAnswer1 = "museum"
         correctAnswer1 = "musuem"
     }
     if(randomNumber == 21){
@@ -949,6 +952,7 @@ function checkNumberKanal(){
     }
     if(randomNumber == 23){
         correctAnswer1 = "printer stairs"
+        correctAnswer2 = "blue stairs"
     }
     if(randomNumber == 24){
         correctAnswer1 = "projector"
@@ -1023,11 +1027,13 @@ function checkNumberKanal(){
         correctAnswer2 = "tunnels"
         correctAnswer3 = "underground"
         correctAnswer4 = "under ground"
+        correctAnswer5 = "underpass"
     }
     if(randomNumber == 41){
         correctAnswer1 = "upper bridge"
         correctAnswer2 = "upper sky bridge"
         correctAnswer3 = "sky bridge"
+        correctAnswer4 = "skybridge"
     }
     if(randomNumber == 42){
         correctAnswer1 = "vending machine"
