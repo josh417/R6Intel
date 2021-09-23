@@ -203,6 +203,65 @@ kanalImages[43] = "Images/kanal/white_stairs.jpg"
 kanalImages[44] = "Images/kanal/yellow_stairs.jpg"
 kanalImages[45] = "Images/kanal/yellow_stairs2.jpg"
 
+const oregonImages = [""]
+oregonImages[0] = "Images/oregon/armoury.jpg"
+oregonImages[1] = "Images/oregon/attic.jpg"
+oregonImages[2] = "Images/oregon/back_laundry.jpg"
+oregonImages[3] = "Images/oregon/back_stairs.jpg"
+oregonImages[4] = "Images/oregon/barrels.jpg"
+oregonImages[5] = "Images/oregon/bedroom_balcony.jpg"
+oregonImages[6] = "Images/oregon/big_tower.jpg"
+oregonImages[7] = "Images/oregon/big_window.jpg"
+oregonImages[8] = "Images/oregon/boiler.jpg"
+oregonImages[9] = "Images/oregon/bunker.jpg"
+oregonImages[10] = "Images/oregon/cctv.jpg"
+oregonImages[11] = "Images/oregon/classroom.jpg"
+oregonImages[12] = "Images/oregon/dining_room.jpg"
+oregonImages[13] = "Images/oregon/dorms.jpg"
+oregonImages[14] = "Images/oregon/freezer_stairs.jpg"
+oregonImages[15] = "Images/oregon/freezer.jpg"
+oregonImages[16] = "Images/oregon/game_room.jpg"
+oregonImages[17] = "Images/oregon/garage.jpg"
+oregonImages[18] = "Images/oregon/kids.jpg"
+oregonImages[19] = "Images/oregon/kitchen.jpg"
+oregonImages[20] = "Images/oregon/laundry_stairs.jpg"
+oregonImages[21] = "Images/oregon/laundry.jpg"
+oregonImages[22] = "Images/oregon/main_stairs.jpg"
+oregonImages[23] = "Images/oregon/master_bedroom.jpg"
+oregonImages[24] = "Images/oregon/meeting_hall.jpg"
+oregonImages[25] = "Images/oregon/rear_stage.jpg"
+oregonImages[26] = "Images/oregon/showers.jpg"
+oregonImages[27] = "Images/oregon/small_office.jpg"
+oregonImages[28] = "Images/oregon/small_tower.jpg"
+oregonImages[29] = "Images/oregon/supply_room.jpg"
+oregonImages[30] = "Images/oregon/top_big_tower.jpg"
+oregonImages[31] = "Images/oregon/top_small_tower.jpg"
+oregonImages[32] = "Images/oregon/trophy.jpg"
+oregonImages[33] = "Images/oregon/walk_in.jpg"
+oregonImages[34] = "Images/oregon/white_stairs.jpg"
+
+const coastlineImages = [""]
+coastlineImages[0] = "Images/coastline/aquarium.jpg"
+coastlineImages[1] = "Images/coastline/billiards_sofa.jpg"
+coastlineImages[2] = "Images/coastline/billiards.jpg"
+coastlineImages[3] = "Images/coastline/blue_bar.jpg"
+coastlineImages[4] = "Images/coastline/cctv.jpg"
+coastlineImages[5] = "Images/coastline/cool_vibes.jpg"
+coastlineImages[6] = "Images/coastline/courtyard.jpg"
+coastlineImages[7] = "Images/coastline/hall_of_fame.jpg"
+coastlineImages[8] = "Images/coastline/hookah_balcony.jpg"
+coastlineImages[9] = "Images/coastline/hookah.jpg"
+coastlineImages[10] = "Images/coastline/kitchen.jpg"
+coastlineImages[11] = "Images/coastline/looby_stairs.jpg"
+coastlineImages[12] = "Images/coastline/luggage.jpg"
+coastlineImages[13] = "Images/coastline/main_lobby.jpg"
+coastlineImages[14] = "Images/coastline/office.jpg"
+coastlineImages[15] = "Images/coastline/penthouse.jpg"
+coastlineImages[16] = "Images/coastline/service_entrance.jpg"
+coastlineImages[17] = "Images/coastline/sunrise_entrance.jpg"
+coastlineImages[18] = "Images/coastline/sunrise.jpg"
+coastlineImages[19] = "Images/coastline/theatre.jpg"
+coastlineImages[20] = "Images/coastline/vip.jpg"
 
 
 let mapSelections = document.getElementById("mapSelectionDropdown")
@@ -344,6 +403,8 @@ function checkNumberClub(){
         correctAnswer1 = "dummies"
         correctAnswer2 = "armoury"
         correctAnswer3 = "armoury lockers"
+        correctAnswer4 = "armory"
+        correctAnswer5 = "armory lockers"
     }
     if(randomNumber == 12){
         correctAnswer1 = "freezer"
@@ -360,6 +421,7 @@ function checkNumberClub(){
     }
     if(randomNumber == 16){
         correctAnswer1 = "jacuzzi"
+        correctAnswer2 = "jacuzzi balcony"
     }
     if(randomNumber == 17){
         correctAnswer1 = "kitchen"
@@ -370,6 +432,7 @@ function checkNumberClub(){
     if(randomNumber == 19){
         correctAnswer1 = "logistics hatch"
         correctAnswer2 = "hatch logistics"
+        correctAnswer3 = "office hatch"
     }
     if(randomNumber == 20){
         correctAnswer1 = "logistics"
@@ -378,6 +441,7 @@ function checkNumberClub(){
     }
     if(randomNumber == 21){
         correctAnswer1 = "lounge"
+        correctAnswer2 = "vending machine"
     }
     if(randomNumber == 22){
         correctAnswer1 = "main entrance"
@@ -412,6 +476,7 @@ function checkNumberClub(){
         correctAnswer1 = "cctv"
         correctAnswer2 = "server"
         correctAnswer3 = "cctv room"
+        correctAnswer4 = "server room"
     }
     if(randomNumber == 30){
         correctAnswer1 = "side entrance"
@@ -428,6 +493,7 @@ function checkNumberClub(){
         correctAnswer1 = "storage"
         correctAnswer2 = "top of blue"
         correctAnswer3 = "top blue stairs"
+        correctAnswer4 = "upper blue"
     }
     if(randomNumber == 34){
         correctAnswer1 = "strip hall"
@@ -448,6 +514,8 @@ function checkNumberClub(){
     if(randomNumber == 38){
         correctAnswer1 = "cctv wall"
         correctAnswer2 = "cctv breach"
+        correctAnswer3 = "server wall"
+        correctAnswer4 = "server breach"
     } else {
 
     }
@@ -464,6 +532,7 @@ function checkNumberBank(){
     if(randomNumber == 2){
         correctAnswer1 = "banana"
         correctAnswer2 = "balcony"
+        correctAnswer3 = "lobby balcony"
     }
     if(randomNumber == 3){
         correctAnswer1 = "bottom skylight"
@@ -587,6 +656,7 @@ function checkNumberBank(){
     if(randomNumber == 32){ 
         correctAnswer1 = "stock trading room"
         correctAnswer2 = "trading room"
+        correctAnswer3 = "stock"
     }
     if(randomNumber == 33){ 
         correctAnswer1 = "tellers office"
@@ -610,6 +680,8 @@ function checkNumberBorder(){
         correctAnswer1 = "armory desk"
         correctAnswer2 = "armoury desk"
         correctAnswer3 = "desk"
+        correctAnswer4 = "small office"
+        correctAnswer5 = "small desk"
     }
     if(randomNumber == 2){
         correctAnswer1 = "armory lockers"
@@ -648,8 +720,8 @@ function checkNumberBorder(){
         correctAnswer1 = "bus balcony"
         correctAnswer2 = "outside archives window"
         correctAnswer3 = "vents"
-        correctAnswer4 = "ventilation"
-        correctAnswer5 = "bridge"
+        correctAnswer4 = "ac balcony"
+        correctAnswer5 = "bus ac"
     }
     if(randomNumber == 10){
         correctAnswer1 = "detention"
@@ -689,6 +761,8 @@ function checkNumberBorder(){
     }
     if(randomNumber == 19){
         correctAnswer1 = "sandwich"
+        correctAnswer2 = "armoury window"
+        correctAnswer3 = "armory window"
     }
     if(randomNumber == 20){
         correctAnswer1 = "security room"
@@ -699,6 +773,7 @@ function checkNumberBorder(){
     if(randomNumber == 21){
         correctAnswer1 = "servers"
         correctAnswer2 = "server room"
+        correctAnswer3 = "server"
     }
     if(randomNumber == 22){
         correctAnswer1 = "showers"
