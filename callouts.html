@@ -265,6 +265,40 @@ coastlineImages[18] = "Images/coastline/sunrise.jpg"
 coastlineImages[19] = "Images/coastline/theatre.jpg"
 coastlineImages[20] = "Images/coastline/vip.jpg"
 
+const themeparkImages = ['']
+themeparkImages[0] = "Images/themepark/arcade.jpg"
+themeparkImages[1] = "Images/themepark/armoryjpg"
+themeparkImages[2] = "Images/themepark/barrels.jpg"
+themeparkImages[3] = "Images/themepark/blue_room.jpg"
+themeparkImages[4] = "Images/themepark/break_room.jpg"
+themeparkImages[5] = "Images/themepark/bunk.jpg"
+themeparkImages[6] = "Images/themepark/cafe_terrace.jpg"
+themeparkImages[7] = "Images/themepark/cafe.jpg"
+themeparkImages[8] = "Images/themepark/cash_balcony.jpg"
+themeparkImages[9] = "Images/themepark/cashstash.jpg"
+themeparkImages[10] = "Images/themepark/control_room.jpg"
+themeparkImages[11] = "Images/themepark/day_care.jpg"
+themeparkImages[12] = "Images/themepark/dragon_stairs.jpg"
+themeparkImages[13] = "Images/themepark/drug_storage.jpg"
+themeparkImages[14] = "Images/themepark/gong_room.jpg"
+themeparkImages[15] = "Images/themepark/initiation_room.jpg"
+themeparkImages[16] = "Images/themepark/lab.jpg"
+themeparkImages[17] = "Images/themepark/locker_room.jpg"
+themeparkImages[18] = "Images/themepark/lower_toilets.jpg"
+themeparkImages[19] = "Images/themepark/maintenance.jpg"
+themeparkImages[20] = "Images/themepark/office_showers.jpg"
+themeparkImages[21] = "Images/themepark/office_vault.jpg"
+themeparkImages[22] = "Images/themepark/office.jpg"
+themeparkImages[23] = "Images/themepark/tellers.jpg"
+themeparkImages[24] = "Images/themepark/throne_room.jpg"
+themeparkImages[25] = "Images/themepark/top_of_dragon.jpg"
+themeparkImages[26] = "Images/themepark/upper_arcade.jpg"
+themeparkImages[27] = "Images/themepark/upper_arcade2.jpg"
+themeparkImages[28] = "Images/themepark/waiting_room.jpg"
+themeparkImages[29] = "Images/themepark/yellow_stairs.jpg"
+themeparkImages[30] = "Images/themepark/yellow_corridor.jpg"
+themeparkImages[31] = "Images/themepark/yellow_stairs_rafters.jpg"
+themeparkImages[32] = "Images/themepark/yellow_stairs2.jpg"
 
 let mapSelections = document.getElementById("mapSelectionDropdown")
 
@@ -273,6 +307,7 @@ const bankDropdown = document.getElementById("bankDropdown")
 const borderDropdown = document.getElementById("borderDropdown")
 const oregonDropdown = document.getElementById("oregonDropdown")
 const coastlineDropdown = document.getElementById("coastlineDropdown")
+const themeparkDropdown = document.getElementById("themeparkDropdown")
 
 let mapArray = clubImages
 
@@ -300,6 +335,10 @@ mapSelections.addEventListener("change", function(){
     }
     if(coastlineDropdown.selected === true){
         mapArray = coastlineImages;
+        start();
+    }
+    if(themeparkDropdown.selected === true){
+        mapArray = themeparkImages;
         start();
     }
 })
