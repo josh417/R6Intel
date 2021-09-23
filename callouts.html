@@ -314,30 +314,44 @@ const themeparkDropdown = document.getElementById("themeparkDropdown")
 mapSelections.addEventListener("change", function(){
     if(bankDropdown.selected === true){
         mapArray = bankImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(clubhouseDropdown.selected === true){
         mapArray = clubImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(borderDropdown.selected === true){
         mapArray = borderImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(kanalDropdown.selected === true){
         mapArray = kanalImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(oregonDropdown.selected === true){
         mapArray = oregonImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(coastlineDropdown.selected === true){
         mapArray = coastlineImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
     if(themeparkDropdown.selected === true){
         mapArray = themeparkImages;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
         start();
     }
 })
@@ -347,11 +361,7 @@ mapSelections.addEventListener("change", function(){
 
 
 randomNumber = 0;
-lastRandomNumber1 = 
-lastRandomNumber2 = 
-lastRandomNumber3 =
-lastRandomNumber4 =
-lastRandomNumber5 =   
+lastRandomNumbers = []
 correctAnswer1 = "N/A"
 correctAnswer2 = "N/A"
 correctAnswer3 = "N/A"
@@ -380,12 +390,23 @@ function start(){
     correctAnswer5 = "N/A"
     inputBox.value = null;
     randomNumber = Math.floor(Math.random() * mapArray.length)
-    if(randomNumber === lastRandomNumber1){
+    if(randomNumber === lastRandomNumbers){
         start()
     } else{
-        lastRandomNumber1 = randomNumber
+        lastRandomNumbers.unshift(randomNumber)
         document.getElementById("imagePrinter").src = mapArray[randomNumber]
         console.log(`Image ID: ${randomNumber}`)
+
+        if(lastRandomNumbers.length === 6){
+            lastRandomNumbers.pop()
+        } else{
+        
+        }
+        
+        if(lastRandomNumbers.slice(1, 7).includes(randomNumber)){
+            start()
+        }
+
         if(clubhouseDropdown.selected === true){
             checkNumberClub()
         }
@@ -598,7 +619,7 @@ function checkNumberBank(){
     }
     if(randomNumber == 4){
         correctAnswer1 = "car park"
-        correctAnswer2 = "garage"
+        correctAnswer2 = "parking lot"
         correctAnswer3 = "upper garage"
     }
     if(randomNumber == 5){
