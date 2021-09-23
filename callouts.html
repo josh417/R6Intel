@@ -255,7 +255,7 @@ coastlineImages[7] = "Images/coastline/hall_of_fame.jpg"
 coastlineImages[8] = "Images/coastline/hookah_balcony.jpg"
 coastlineImages[9] = "Images/coastline/hookah.jpg"
 coastlineImages[10] = "Images/coastline/kitchen.jpg"
-coastlineImages[11] = "Images/coastline/looby_stairs.jpg"
+coastlineImages[11] = "Images/coastline/lobby_stairs.jpg"
 coastlineImages[12] = "Images/coastline/luggage.jpg"
 coastlineImages[13] = "Images/coastline/main_lobby.jpg"
 coastlineImages[14] = "Images/coastline/office.jpg"
@@ -397,6 +397,9 @@ function start(){
         }
         if(kanalDropdown.selected === true){
             checkNumberKanal()
+        }
+        if(coastlineDropdown.selected === true){
+            checkNumberCoastline()
         }
     }
 
@@ -1051,7 +1054,94 @@ function checkNumberOregon(){
 
 function checkNumberCoastline(){
     if(randomNumber == 0){
-        correctAnswer1 = "archives"
+        correctAnswer1 = "aqua"
+        correctAnswer2 = "aquarium"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "billiards"
+        correctAnswer2 = "sofa"
+        correctAnswer3 = "billiards sofa"
+        correctAnswer4 = "billiards lounge"
+        correctAnswer5 = "billiards bar"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "billiards"
+        correctAnswer2 = "pool"
+        correctAnswer2 = "pool table"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "blue bar"
+        correctAnswer2 = "blue"
+
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "cctv"
+        correctAnswer2 = "security room"
+        correctAnswer3 = "security"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "cool vibes"
+        correctAnswer2 = "cool vibes stairs"
+        correctAnswer3 = "blue stairs"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "courtyard"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "hall of fame"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "hookah balcony"
+        correctAnswer2 = "balcony hookah"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "hookah"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "kitchen"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "lobby stairs"
+        correctAnswer2 = "white stairs"
+
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "luggage"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "lobby"
+        correctAnswer2 = "main entrance"
+        correctAnswer3 = "main lobby"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "office"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "penthouse"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "service entrance"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "sunrise entrance"
+        correctAnswer2 = "pool entrance"
+
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "sunrise"
+        correctAnswer2 = "sunrise bar"
+
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "theater"
+        correctAnswer2 = "theatre"
+
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "vip"
+        correctAnswer2 = "vip lounge"
+        correctAnswer3 = "vip room"
+
     }
 }
 
