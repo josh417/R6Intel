@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R6 Intel | Operators</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body id="body">
+<h1>Operator Icons</h1>
+<h2 id="scoreDisplay" class="score">Score: 0</h2>
+
+
+<div class="mapSelectorDiv">
+    <select class="mapSelector" name="Maps" id="mapSelectionDropdown">
+        <option id="selectMap" value="select">Select Type</option>
+        <option id="allDropdown" value="allOps">All Operators</option>
+        <option id="attackersDropdown" value="attackerOps">Attackers Only</option>
+        <option id="defendersDropdown" value="defenderOps">Defenders Only</option>
+      </select>
+</div>
+
+<div class="imageDiv">
+    <img id="imagePrinter" class="imageClass" src="" alt="">
+</div>
+
+<div class="inputDiv">
+    <input class="inputClass" id="input" type="text">
+</div>
+
+<div class="backButtonDiv">
+    <button onclick="location.href='index.html'" class="backBtn">Back</button>
+    <button onclick='skip()' class="backBtn">Skip</button>
+</div>
+
+
+
+
+<script>
+
+let inputBox = document.getElementById("input")
+let score = 0;
+const scorePrinter = document.getElementById("scoreDisplay")
+
+// MAP IMAGES
+const body = document.getElementById("body")
+
+const iconImagesAll = ['']
+iconImagesAll[0] = "Images/icons/ace.png"
+iconImagesAll[1] = "Images/icons/alibi.png"
+iconImagesAll[2] = "Images/icons/amaru.png"
+iconImagesAll[3] = "Images/icons/aruni.png"
+iconImagesAll[4] = "Images/icons/ash.png"
+iconImagesAll[5] = "Images/icons/bandit.png"
+iconImagesAll[6] = "Images/icons/blackbeard.png"
+iconImagesAll[7] = "Images/icons/blitz.png"
+iconImagesAll[8] = "Images/icons/buck.png"
+iconImagesAll[9] = "Images/icons/capitao.png"
+iconImagesAll[10] = "Images/icons/castle.png"
+iconImagesAll[11] = "Images/icons/caveira.png"
+iconImagesAll[12] = "Images/icons/clash.png"
+iconImagesAll[13] = "Images/icons/doc.png"
+iconImagesAll[14] = "Images/icons/dokkaebi.png"
+iconImagesAll[15] = "Images/icons/echo.png"
+iconImagesAll[16] = "Images/icons/ela.png"
+iconImagesAll[17] = "Images/icons/finka.png"
+iconImagesAll[18] = "Images/icons/flores.png"
+iconImagesAll[19] = "Images/icons/frost.png"
+iconImagesAll[20] = "Images/icons/fuze.png"
+iconImagesAll[21] = "Images/icons/glaz.png"
+iconImagesAll[22] = "Images/icons/goyo.png"
+iconImagesAll[23] = "Images/icons/gridlock.png"
+iconImagesAll[24] = "Images/icons/hibana.png"
+iconImagesAll[25] = "Images/icons/iana.png"
+iconImagesAll[26] = "Images/icons/iq.png"
+iconImagesAll[27] = "Images/icons/jackal.png"
+iconImagesAll[28] = "Images/icons/jager.png"
+iconImagesAll[29] = "Images/icons/kaid.png"
+iconImagesAll[30] = "Images/icons/kali.png"
+iconImagesAll[31] = "Images/icons/kapkan.png"
+iconImagesAll[32] = "Images/icons/lesion.png"
+iconImagesAll[33] = "Images/icons/lion.png"
+iconImagesAll[34] = "Images/icons/maestro.png"
+iconImagesAll[35] = "Images/icons/maverick.png"
+iconImagesAll[36] = "Images/icons/melusi.png"
+iconImagesAll[37] = "Images/icons/mira.png"
+iconImagesAll[38] = "Images/icons/montagne.png"
+iconImagesAll[39] = "Images/icons/mozzie.png"
+iconImagesAll[40] = "Images/icons/mute.png"
+iconImagesAll[41] = "Images/icons/nokk.png"
+iconImagesAll[42] = "Images/icons/nomad.png"
+iconImagesAll[43] = "Images/icons/oryx.png"
+iconImagesAll[44] = "Images/icons/osa.png"
+iconImagesAll[45] = "Images/icons/pulse.png"
+iconImagesAll[46] = "Images/icons/rook.png"
+iconImagesAll[47] = "Images/icons/sledge.png"
+iconImagesAll[48] = "Images/icons/smoke.png"
+iconImagesAll[49] = "Images/icons/tachanka.png"
+iconImagesAll[50] = "Images/icons/thatcher.png"
+iconImagesAll[51] = "Images/icons/thermite.png"
+iconImagesAll[52] = "Images/icons/thunderbird.png"
+iconImagesAll[53] = "Images/icons/twitch.png"
+iconImagesAll[54] = "Images/icons/valkyrie.png"
+iconImagesAll[55] = "Images/icons/vigil.png"
+iconImagesAll[56] = "Images/icons/wamai.png"
+iconImagesAll[57] = "Images/icons/warden.png"
+iconImagesAll[58] = "Images/icons/ying.png"
+iconImagesAll[59] = "Images/icons/zero.png"
+iconImagesAll[60] = "Images/icons/zofia.png"
+
+
+let mapSelections = document.getElementById("mapSelectionDropdown")
+
+const allDropdown = document.getElementById("allDropdown")
+const attackersDropdown = document.getElementById("attackersDropdown")
+const defendersDropdown = document.getElementById("defendersDropdown")
+
+mapSelections.addEventListener("change", function(){
+    if(allDropdown.selected === true){
+        mapArray = iconImagesAll;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
+        start();
+    }
+    if(attackersDropdown.selected === true){
+        mapArray = iconImagesAttackrs;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
+        start();
+    }
+    if(defendersDropdown.selected === true){
+        mapArray = iconImagesDefenders;
+        score = 0
+        scorePrinter.innerHTML = `Score: ${score}`
+        start();
+    }
+})
+
+
+
+
+
+randomNumber = 0;
+lastRandomNumbers = []
+correctAnswer1 = "N/A"
+correctAnswer2 = "N/A"
+correctAnswer3 = "N/A"
+correctAnswer4 = "N/A"
+correctAnswer5 = "N/A"
+
+window.addEventListener('load', (e) =>{
+    start()
+})
+
+body.addEventListener("keydown", (key) =>{
+        if(key.key === "Enter"){
+            checkAnswer()
+
+        }
+    })
+
+
+
+
+function start(){
+    console.clear();
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+    inputBox.value = null;
+    randomNumber = Math.floor(Math.random() * mapArray.length)
+    if(randomNumber === lastRandomNumbers){
+        start()
+    } else{
+        lastRandomNumbers.unshift(randomNumber)
+        document.getElementById("imagePrinter").src = mapArray[randomNumber]
+        console.log(`Image ID: ${randomNumber}`)
+
+        if(lastRandomNumbers.length === 6){
+            lastRandomNumbers.pop()
+        } else{
+        
+        }
+        
+        if(lastRandomNumbers.slice(1, 7).includes(randomNumber)){
+            start()
+        }
+
+        if(allDropdown.selected === true){
+            checkNumberAll()
+        }
+        if(attackersDropdown.selected === true){
+            checkNumberAttackers()
+        }
+        if(defendersDropdown.selected === true){
+            checkNumberDefenders()
+        }
+    }
+
+
+}
+
+
+function checkNumberAll(){
+    correctAnswer1 = ""
+    correctAnswer2 = ""
+    correctAnswer3 = ""
+
+    if(randomNumber == 0){
+        correctAnswer1 = "ace"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "alibi"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "amaru"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "aruni"
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "ash"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "bandit"
+    }
+
+    if(randomNumber == 6){
+        correctAnswer1 = "blackbeard"
+        correctAnswer2 = "black beard"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "blitz"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "buck"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "capitao"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "castle"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "caveira"
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "clash"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "doc"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "dokkaebi"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "echo"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "ela"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "finka"
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "flores"
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "frost"
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "fuze"
+    }
+    if(randomNumber == 21){
+        correctAnswer1 = "glaz"
+    }
+    if(randomNumber == 22){
+        correctAnswer1 = "goyo"
+    }
+    if(randomNumber == 23){
+        correctAnswer1 = "gridlock"
+    }
+    if(randomNumber == 24){
+        correctAnswer1 = "hibana"
+    }
+    if(randomNumber == 25){
+        correctAnswer1 = "iana"
+    }
+    if(randomNumber == 26){
+        correctAnswer1 = "iq"
+    }
+    if(randomNumber == 27){
+        correctAnswer1 = "jackal"
+    }
+    if(randomNumber == 28){
+        correctAnswer1 = "jager"
+    }
+    if(randomNumber == 29){
+        correctAnswer1 = "kaid"
+    }
+    if(randomNumber == 30){
+        correctAnswer1 = "kali"
+    }
+    if(randomNumber == 31){
+        correctAnswer1 = "kapkan"
+    }
+    if(randomNumber == 32){
+        correctAnswer1 = "lesion"
+    }
+    if(randomNumber == 33){
+        correctAnswer1 = "lion"
+    }
+    if(randomNumber == 34){
+        correctAnswer1 = "maestro"
+    }
+    if(randomNumber == 35){
+        correctAnswer1 = "maverick"
+    }
+    if(randomNumber == 36){
+        correctAnswer1 = "melusi"
+    }
+    if(randomNumber == 37){
+        correctAnswer1 = "mira"
+    }
+    if(randomNumber == 38){
+        correctAnswer1 = "montagne"
+    }
+    if(randomNumber == 39){
+        correctAnswer1 = "mozzie"
+    } 
+    if(randomNumber == 40){
+        correctAnswer1 = "mute"
+    } 
+    if(randomNumber == 41){
+        correctAnswer1 = "nokk"
+    } 
+    if(randomNumber == 42){
+        correctAnswer1 = "nomad"
+    } 
+    if(randomNumber == 43){
+        correctAnswer1 = "oryx"
+    } 
+    if(randomNumber == 44){
+        correctAnswer1 = "osa"
+    } 
+    if(randomNumber == 45){
+        correctAnswer1 = "pulse"
+    } 
+    if(randomNumber == 46){
+        correctAnswer1 = "rook"
+    } 
+    if(randomNumber == 47){
+        correctAnswer1 = "sledge"
+    } 
+    if(randomNumber == 48){
+        correctAnswer1 = "smoke"
+    } 
+    if(randomNumber == 49){
+        correctAnswer1 = "tachanka"
+    } 
+    if(randomNumber == 50){
+        correctAnswer1 = "thatcher"
+    } 
+    if(randomNumber == 51){
+        correctAnswer1 = "thermite"
+    } 
+    if(randomNumber == 52){
+        correctAnswer1 = "thunderbird"
+    } 
+    if(randomNumber == 53){
+        correctAnswer1 = "twitch"
+    } 
+    if(randomNumber == 54){
+        correctAnswer1 = "valkyrie"
+    } 
+    if(randomNumber == 55){
+        correctAnswer1 = "vigil"
+    } 
+    if(randomNumber == 56){
+        correctAnswer1 = "wamai"
+    } 
+    if(randomNumber == 57){
+        correctAnswer1 = "warden"
+    } 
+    if(randomNumber == 58){
+        correctAnswer1 = "ying"
+    } 
+    if(randomNumber == 59){
+        correctAnswer1 = "zero"
+    } 
+    if(randomNumber == 60){
+        correctAnswer1 = "zofia"
+    } 
+    
+    
+    else {
+
+    }
+}
+
+function checkNumberBank(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "atm"
+        correctAnswer2 = "atms"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "banana"
+        correctAnswer2 = "balcony"
+        correctAnswer3 = "lobby balcony"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "bottom skylight"
+        correctAnswer2 = "bottom square"
+        correctAnswer3 = "skylight stairwell"
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "car park"
+        correctAnswer2 = "parking lot"
+        correctAnswer3 = "upper garage"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "cctv"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "ceo"
+        correctAnswer2 = "ceo office"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "conference room"
+        correctAnswer2 = "conference"
+        correctAnswer3 = "meeting room"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "dirt"
+        correctAnswer2 = "tunnel"
+        correctAnswer3 = "tunnels"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "electrical"
+        correctAnswer2 = "electrical room"
+    }
+    if(randomNumber == 10){ //elevator hatch dropdown area -- needs name
+        correctAnswer1 = "elevator hatch"
+        correctAnswer2 = "elevator construction"
+    }
+    if(randomNumber == 11){ 
+        correctAnswer1 = "front desk"
+        correctAnswer2 = "desk"
+    }
+    if(randomNumber == 12){ 
+        correctAnswer1 = "garage ramp"
+        correctAnswer2 = "ramp"
+    }
+    if(randomNumber == 13){ 
+        correctAnswer1 = "garage"
+    }
+    if(randomNumber == 14){ 
+        correctAnswer1 = "gold vault"
+        correctAnswer2 = "gold"
+    }
+    if(randomNumber == 15){ 
+        correctAnswer1 = "janitors"
+        correctAnswer2 = "janitor"
+        correctAnswer3 = "janitors closet"
+    }
+    if(randomNumber == 16){ 
+        correctAnswer1 = "tellers desk"
+        correctAnswer2 = "tellers"
+    }
+    if(randomNumber == 17){ 
+        correctAnswer1 = "loan office"
+        correctAnswer2 = "loans"
+        correctAnswer3 = "office"
+    }
+    if(randomNumber == 18){ 
+        correctAnswer1 = "lobby stairs"
+        correctAnswer2 = "spiral stairs"
+    }
+    if(randomNumber == 19){ 
+        correctAnswer1 = "lobby"
+    }
+    if(randomNumber == 20){ 
+        correctAnswer1 = "lockers"
+        correctAnswer2 = "locker"
+    }
+    if(randomNumber == 21){ 
+        correctAnswer1 = "lounge"
+        correctAnswer2 = "executive lounge"
+    }
+    if(randomNumber == 22){ 
+        correctAnswer1 = "main stairs"
+    }
+    if(randomNumber == 23){ 
+        correctAnswer1 = "admin office"
+    }
+    if(randomNumber == 24){ 
+        correctAnswer1 = "open area"
+    }
+    if(randomNumber == 25){ 
+        correctAnswer1 = "red"
+        correctAnswer2 = "secure hallway"
+        correctAnswer3 = "red hallway"
+    }
+    if(randomNumber == 26){ 
+        correctAnswer1 = "server room"
+        correctAnswer2 = "servers"
+        correctAnswer3 = "server"
+    }
+    if(randomNumber == 27){ 
+        correctAnswer1 = "server stairs"
+        correctAnswer2 = "blue stairs"
+    }
+    if(randomNumber == 28){ 
+        correctAnswer1 = "skylight stairs"
+        correctAnswer2 = "skylight stairwell"
+    }
+    if(randomNumber == 29){ 
+        correctAnswer1 = "skylight stairwell"
+        correctAnswer2 = "upper square"
+        correctAnswer3 = "upper skylight"
+    }
+    if(randomNumber == 30){ 
+        correctAnswer1 = "staff room"
+    }
+    if(randomNumber == 31){ 
+        correctAnswer1 = "stock hallway"
+        correctAnswer2 = "main hallway"
+        correctAnswer3 = "vending machine"
+    }
+    if(randomNumber == 32){ 
+        correctAnswer1 = "stock trading room"
+        correctAnswer2 = "trading room"
+        correctAnswer3 = "stock"
+    }
+    if(randomNumber == 33){ 
+        correctAnswer1 = "tellers office"
+    }
+    if(randomNumber == 34){ 
+        correctAnswer1 = "terrace"
+    }
+    if(randomNumber == 35){ 
+        correctAnswer1 = "vault lobby"
+    }
+    if(randomNumber == 36){ 
+        correctAnswer1 = "vault"
+    }
+}
+
+function checkNumberBorder(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "armory desk"
+        correctAnswer2 = "armoury desk"
+        correctAnswer3 = "desk"
+        correctAnswer4 = "small office"
+        correctAnswer5 = "small desk"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "armory lockers"
+        correctAnswer2 = "armoury lockers"
+        correctAnswer3 = "main breach"
+        correctAnswer4 = "armoury wall"
+        correctAnswer5 = "armory wall"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "armory lockers"
+        correctAnswer2 = "armoury lockers"
+        correctAnswer3 = "armoury"
+        correctAnswer4 = "armory"
+        correctAnswer5 = "lockers"
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "balcony"
+        correctAnswer2 = "rafters"
+        correctAnswer3 = "catwalk"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "break room"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "break room"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "construction"
+        correctAnswer2 = "workshop"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "customs"
+        correctAnswer2 = "customs inspection"
+    }
+    if(randomNumber == 9){ // NEED NAMING
+        correctAnswer1 = "bus balcony"
+        correctAnswer2 = "outside archives window"
+        correctAnswer3 = "vents"
+        correctAnswer4 = "ac balcony"
+        correctAnswer5 = "bus ac"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "detention"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "east stairs"
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "east stairs"
+        correctAnswer2 = "top east stairs"
+        correctAnswer3 = "top of east stairs"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "main entrance"
+        correctAnswer2 = "exit hallway"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "fountain"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "metal stairs"
+        correctAnswer2 = "main stairs"
+        correctAnswer3 = "metal"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "metal stairs"
+        correctAnswer2 = "main stairs"
+        correctAnswer3 = "metal"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "office"
+        correctAnswer2 = "offices"
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "passport check"
+        correctAnswer2 = "passport"
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "sandwich"
+        correctAnswer2 = "armoury window"
+        correctAnswer3 = "armory window"
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "security room"
+        correctAnswer2 = "security"
+        correctAnswer3 = "cctv"
+
+    }
+    if(randomNumber == 21){
+        correctAnswer1 = "servers"
+        correctAnswer2 = "server room"
+        correctAnswer3 = "server"
+    }
+    if(randomNumber == 22){
+        correctAnswer1 = "showers"
+        correctAnswer2 = "bathroom"
+    }
+    if(randomNumber == 23){
+        correctAnswer1 = "waiting room"
+        correctAnswer2 = "lobby"
+    }
+    if(randomNumber == 24){
+        correctAnswer1 = "tellers"
+    }
+    if(randomNumber == 25){
+        correctAnswer1 = "ventilation"
+        correctAnswer2 = "vents"
+    }
+    if(randomNumber == 26){
+        correctAnswer1 = "waiting room"
+        correctAnswer2 = "lobby"
+    }
+
+}
+
+function checkNumberKanal(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "balcony renovations"
+        correctAnswer2 = "balcony"
+        correctAnswer3 = "outside renovations"
+        correctAnswer4 = "renovations wall"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "red stairs"
+        correctAnswer2 = "bottom red stairs"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "coast guard"
+        correctAnswer2 = "meeting room"
+        correctAnswer3 = "coast guard meeting room"
+        correctAnswer4 = "meeting"
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "coast guard roof"
+        correctAnswer2 = "printer window"
+        correctAnswer3 = "outside printer"
+        correctAnswer4 = "roof"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "control room"
+        correctAnswer2 = "control"
+        correctAnswer3 = "cctv"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "diving alcove"
+        correctAnswer2 = "alcove"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "diving room"
+        correctAnswer2 = "diving"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "garage"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "green stairs"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "kayaks"
+        correctAnswer2 = "kayak room"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "kayaks"
+        correctAnswer2 = "kayak room"
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "kitchen"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "kitchen"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "lockers"
+        correctAnswer2 = "locker room"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "lounge"
+        correctAnswer2 = "games room"
+        correctAnswer3 = "game room"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "lounge"
+        correctAnswer2 = "gym"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "lower bridge"
+        correctAnswer2 = "bridge"
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "map room"
+        correctAnswer2 = "maps room"
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "model room"
+        correctAnswer2 = "model"
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "museum"
+        correctAnswer1 = "musuem"
+    }
+    if(randomNumber == 21){
+        correctAnswer1 = "pipes"
+        correctAnswer2 = "pipes room"
+    }
+    if(randomNumber == 22){
+        correctAnswer1 = "printer"
+        correctAnswer2 = "printer room"
+    }
+    if(randomNumber == 23){
+        correctAnswer1 = "printer stairs"
+        correctAnswer2 = "blue stairs"
+    }
+    if(randomNumber == 24){
+        correctAnswer1 = "projector"
+        correctAnswer2 = "projector room"
+    }
+    if(randomNumber == 25){
+        correctAnswer1 = "radar room"
+        correctAnswer2 = "radar"
+    }
+    if(randomNumber == 26){
+        correctAnswer1 = "radio room"
+        correctAnswer2 = "radio"
+    }
+    if(randomNumber == 27){
+        correctAnswer1 = "radio room"
+        correctAnswer2 = "radio"
+    }
+    if(randomNumber == 28){
+        correctAnswer1 = "reception"
+        correctAnswer2 = "main entrance"
+    }
+    if(randomNumber == 29){
+        correctAnswer1 = "red stairs"
+    }
+    if(randomNumber == 30){
+        correctAnswer1 = "renovations"
+        correctAnswer2 = "renovations wall"
+    }
+    if(randomNumber == 31){
+        correctAnswer1 = "roof entrance"
+        correctAnswer2 = "top entrance"
+    }
+    if(randomNumber == 32){
+        correctAnswer1 = "security"
+        correctAnswer2 = "security room"
+        correctAnswer3 = "cctv"
+    }
+    if(randomNumber == 33){
+        correctAnswer1 = "security"
+        correctAnswer2 = "security room"
+        correctAnswer3 = "cctv"
+    }
+    if(randomNumber == 34){
+        correctAnswer1 = "servers"
+        correctAnswer2 = "server"
+        correctAnswer3 = "server room"
+    }
+    if(randomNumber == 35){
+        correctAnswer1 = "showers"
+        correctAnswer2 = "shower"
+        correctAnswer3 = "shower corridor"
+    }
+    if(randomNumber == 36){
+        correctAnswer1 = "supply room entrance"
+        correctAnswer2 = "basement entrance"
+
+    }
+    if(randomNumber == 37){
+        correctAnswer1 = "supply"
+        correctAnswer2 = "supply room"
+    }
+    if(randomNumber == 38){
+        correctAnswer1 = "toilets"
+        correctAnswer2 = "bathroom"
+    }
+    if(randomNumber == 39){
+        correctAnswer1 = "roof entrance"
+        correctAnswer2 = "top of white stairs"
+    }
+    if(randomNumber == 40){
+        correctAnswer1 = "tunnel"
+        correctAnswer2 = "tunnels"
+        correctAnswer3 = "underground"
+        correctAnswer4 = "under ground"
+        correctAnswer5 = "underpass"
+    }
+    if(randomNumber == 41){
+        correctAnswer1 = "upper bridge"
+        correctAnswer2 = "upper sky bridge"
+        correctAnswer3 = "sky bridge"
+        correctAnswer4 = "skybridge"
+    }
+    if(randomNumber == 42){
+        correctAnswer1 = "vending machine"
+        correctAnswer2 = "vending machines"
+    }
+    if(randomNumber == 43){
+        correctAnswer1 = "white stairs"
+        correctAnswer2 = "metal stairs"
+    }
+    if(randomNumber == 44){
+        correctAnswer1 = "yellow stairs"
+    }
+    if(randomNumber == 45){
+        correctAnswer1 = "yellow stairs"
+    }
+
+}
+
+function checkNumberOregon(){
+    if(randomNumber == 0){
+        correctAnswer1 = "archives"
+    }
+}
+
+function checkNumberCoastline(){
+    if(randomNumber == 0){
+        correctAnswer1 = "aqua"
+        correctAnswer2 = "aquarium"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "billiards"
+        correctAnswer2 = "sofa"
+        correctAnswer3 = "billiards sofa"
+        correctAnswer4 = "billiards lounge"
+        correctAnswer5 = "billiards bar"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "billiards"
+        correctAnswer2 = "pool"
+        correctAnswer2 = "pool table"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "blue bar"
+        correctAnswer2 = "blue"
+
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "cctv"
+        correctAnswer2 = "security room"
+        correctAnswer3 = "security"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "cool vibes"
+        correctAnswer2 = "cool vibes stairs"
+        correctAnswer3 = "blue stairs"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "courtyard"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "hall of fame"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "hookah balcony"
+        correctAnswer2 = "balcony hookah"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "hookah"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "kitchen"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "lobby stairs"
+        correctAnswer2 = "white stairs"
+
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "luggage"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "lobby"
+        correctAnswer2 = "main entrance"
+        correctAnswer3 = "main lobby"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "office"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "penthouse"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "service entrance"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "sunrise entrance"
+        correctAnswer2 = "pool entrance"
+
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "sunrise"
+        correctAnswer2 = "sunrise bar"
+
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "theater"
+        correctAnswer2 = "theatre"
+
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "vip"
+        correctAnswer2 = "vip lounge"
+        correctAnswer3 = "vip room"
+
+    }
+}
+
+function checkNumberThemepark(){
+    if(randomNumber == 0){
+        correctAnswer1 = "arcade"
+        correctAnswer2 = "lower arcade"
+        correctAnswer3 = "arcade entrance"
+    }
+    if(randomNumber == 1){
+        correctAnswer1 = "armory"
+        correctAnswer2 = "armoury"
+    }
+    if(randomNumber == 2){
+        correctAnswer1 = "barrels"
+    }
+    if(randomNumber == 3){
+        correctAnswer1 = "blue"
+        correctAnswer2 = "blue room"
+        correctAnswer3 = "connector"
+    }
+    if(randomNumber == 4){
+        correctAnswer1 = "break"
+        correctAnswer2 = "break room"
+    }
+    if(randomNumber == 5){
+        correctAnswer1 = "bunk"
+        correctAnswer2 = "bunks"
+    }
+    if(randomNumber == 6){
+        correctAnswer1 = "cafe terrace"
+    }
+    if(randomNumber == 7){
+        correctAnswer1 = "cafe"
+        correctAnswer2 = "cafeteria"
+    }
+    if(randomNumber == 8){
+        correctAnswer1 = "cash balcony"
+        correctAnswer2 = "outside cash"
+    }
+    if(randomNumber == 9){
+        correctAnswer1 = "cashstash"
+        correctAnswer2 = "cash stash"
+        correctAnswer3 = "cash"
+        correctAnswer4 = "cash room"
+    }
+    if(randomNumber == 10){
+        correctAnswer1 = "control room"
+        correctAnswer2 = "cctv"
+    }
+    if(randomNumber == 11){
+        correctAnswer1 = "day care"
+    }
+    if(randomNumber == 12){
+        correctAnswer1 = "dragon stairs"
+        correctAnswer2 = "dragon"
+    }
+    if(randomNumber == 13){
+        correctAnswer1 = "drug storage"
+        correctAnswer2 = "drug"
+    }
+    if(randomNumber == 14){
+        correctAnswer1 = "gong"
+        correctAnswer2 = "gong room"
+    }
+    if(randomNumber == 15){
+        correctAnswer1 = "initiation room"
+        correctAnswer2 = "initiation"
+    }
+    if(randomNumber == 16){
+        correctAnswer1 = "lab"
+        correctAnswer2 = "drug lab"
+    }
+    if(randomNumber == 17){
+        correctAnswer1 = "locker"
+        correctAnswer2 = "lockers"
+        correctAnswer3 = "locker room"
+    }
+    if(randomNumber == 18){
+        correctAnswer1 = "lower toilets"
+        correctAnswer2 = "toilets"
+        correctAnswer3 = "bathroom"
+    }
+    if(randomNumber == 19){
+        correctAnswer1 = "maintenance"
+    }
+    if(randomNumber == 20){
+        correctAnswer1 = "showers"
+        correctAnswer2 = "office showers"
+    }
+    if(randomNumber == 21){
+        correctAnswer1 = "vault"
+        correctAnswer2 = "office vault"
+    }
+    if(randomNumber == 22){
+        correctAnswer1 = "office"
+    }
+    if(randomNumber == 23){
+        correctAnswer1 = "tellers"
+    }
+    if(randomNumber == 24){
+        correctAnswer1 = "throne room"
+        correctAnswer2 = "throne"
+    }
+    if(randomNumber == 25){
+        correctAnswer1 = "top dragon"
+        correctAnswer2 = "dragon"
+        correctAnswer2 = "dragon stairs"
+        correctAnswer2 = "top dragon stairs"
+    }
+    if(randomNumber == 26){
+        correctAnswer1 = "upper arcade"
+        correctAnswer2 = "top arcade"
+        correctAnswer3 = "arcade balcony"
+    }
+    if(randomNumber == 27){
+        correctAnswer1 = "upper arcade"
+        correctAnswer2 = "top arcade"
+        correctAnswer3 = "arcade balcony"
+    }
+    if(randomNumber == 28){
+        correctAnswer1 = "waiting room"
+        correctAnswer2 = "waiting"
+    }
+    if(randomNumber == 29){
+        correctAnswer1 = "yellow stairs"
+        correctAnswer2 = "cafe stairs"
+    }
+    if(randomNumber == 30){
+        correctAnswer1 = "yellow corridor"
+        correctAnswer2 = "yellow"
+    }
+    if(randomNumber == 31){
+        correctAnswer1 = "rafters"
+        correctAnswer2 = "catwalk"
+        correctAnswer3 = "catwalk"
+    }
+    if(randomNumber == 32){
+        correctAnswer1 = "yellow stairs"
+        correctAnswer2 = "cafe stairs"
+    }
+    
+}
+
+
+function skip(){
+    window.alert(`The correct answer was one of the following: \n 1. ${correctAnswer1} \n 2. ${correctAnswer2} \n 3. ${correctAnswer3} \n 4. ${correctAnswer4} \n 5. ${correctAnswer5}`)
+    start();
+}
+
+
+function checkAnswer(){
+    if(inputBox.value.toLowerCase() == "None"){
+        inputBox.value = null;
+        console.log("Input box = None")
+    }
+    if(inputBox.value.toLowerCase() == correctAnswer1 || inputBox.value.toLowerCase() == correctAnswer2 || inputBox.value.toLowerCase() == correctAnswer3 || inputBox.value.toLowerCase() == correctAnswer4 || inputBox.value.toLowerCase() == correctAnswer5  ){
+        score++
+        scorePrinter.innerHTML = `Score: ${score}`
+        start();
+    } else {
+        console.log("Wrong answer")
+    }
+}
+
+
+
+
+</script>
+</html>
