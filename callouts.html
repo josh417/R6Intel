@@ -436,9 +436,11 @@ function start(){
 
 
 function checkNumberClub(){
-    correctAnswer1 = ""
-    correctAnswer2 = ""
-    correctAnswer3 = ""
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
 
     if(randomNumber == 0){
         correctAnswer1 = "armoury"
@@ -607,6 +609,12 @@ function checkNumberClub(){
 }
 
 function checkNumberBank(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+
     if(randomNumber == 0){
         correctAnswer1 = "archives"
     }
@@ -758,6 +766,12 @@ function checkNumberBank(){
 }
 
 function checkNumberBorder(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+
     if(randomNumber == 0){
         correctAnswer1 = "archives"
     }
@@ -883,6 +897,12 @@ function checkNumberBorder(){
 }
 
 function checkNumberKanal(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+
     if(randomNumber == 0){
         correctAnswer1 = "archives"
     }
@@ -1081,12 +1101,24 @@ function checkNumberKanal(){
 }
 
 function checkNumberOregon(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+
     if(randomNumber == 0){
         correctAnswer1 = "archives"
     }
 }
 
 function checkNumberCoastline(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+
     if(randomNumber == 0){
         correctAnswer1 = "aqua"
         correctAnswer2 = "aquarium"
@@ -1180,6 +1212,12 @@ function checkNumberCoastline(){
 }
 
 function checkNumberThemepark(){
+    correctAnswer1 = "N/A"
+    correctAnswer2 = "N/A"
+    correctAnswer3 = "N/A"
+    correctAnswer4 = "N/A"
+    correctAnswer5 = "N/A"
+    
     if(randomNumber == 0){
         correctAnswer1 = "arcade"
         correctAnswer2 = "lower arcade"
@@ -1334,7 +1372,7 @@ function checkAnswer(){
         inputBox.value = null;
         console.log("Input box = None")
     }
-    if(inputBox.value.toLowerCase() == correctAnswer1 || inputBox.value.toLowerCase() == correctAnswer2 || inputBox.value.toLowerCase() == correctAnswer3 || inputBox.value.toLowerCase() == correctAnswer4 || inputBox.value.toLowerCase() == correctAnswer5  ){
+    if(inputBox.value.toLowerCase().includes(correctAnswer1) || inputBox.value.toLowerCase().includes(correctAnswer2) || inputBox.value.toLowerCase().includes(correctAnswer3) || inputBox.value.toLowerCase().includes(correctAnswer4) || inputBox.value.toLowerCase().includes(correctAnswer5)){
         score++
         scorePrinter.innerHTML = `Score: ${score}`
         start();
