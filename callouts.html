@@ -356,10 +356,6 @@ mapSelections.addEventListener("change", function(){
     }
 })
 
-
-
-
-
 randomNumber = 0;
 lastRandomNumbers = []
 correctAnswer1 = "N/A"
@@ -379,11 +375,7 @@ body.addEventListener("keydown", (key) =>{
         }
     })
 
-
-
-
 function start(){
-    console.clear();
     correctAnswer1 = "N/A"
     correctAnswer2 = "N/A"
     correctAnswer3 = "N/A"
@@ -392,19 +384,24 @@ function start(){
     inputBox.value = null;
     randomNumber = Math.floor(Math.random() * mapArray.length)
     if(randomNumber === lastRandomNumbers){
-        start()
+        console.log("Re Rolled")
+        return start();
     } else{
         lastRandomNumbers.unshift(randomNumber)
         document.getElementById("imagePrinter").src = mapArray[randomNumber]
         console.log(`Image ID: ${randomNumber}`)
 
+        console.log(`Last Random Numbers: ${lastRandomNumbers}`)
+
         if(lastRandomNumbers.length === 6){
             lastRandomNumbers.pop()
+            console.log(`Last Random Numbers: ${lastRandomNumbers}`)
         } else{
         
         }
         
         if(lastRandomNumbers.slice(1, 7).includes(randomNumber)){
+            console.log(`Last Random Numbers: ${lastRandomNumbers}`)
             start()
         }
 
