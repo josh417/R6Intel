@@ -134,3 +134,18 @@ h1 {
     font-size: 32px;
     border-radius: 16px;
 }
+
+@media (max-width: 500px){
+    .imageClass{
+        max-width: 450px;
+        max-height: 450px;
+    }
+    .inputClass {
+        padding: 16px 64px;
+        font-size: 16px;
+    }
+    .backBtn {
+        padding: 12px;
+        font-size: 26
+    }
+}
