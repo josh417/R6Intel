@@ -137,8 +137,8 @@ h1 {
 
 @media (max-width: 500px){
     .imageClass{
-        max-width: 250px;
-        max-height: 200px;
+        max-width: 300px;
+        max-height: 250px;
     }
     .inputClass {
         margin-top: 10px;
