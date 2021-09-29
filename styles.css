@@ -137,15 +137,23 @@ h1 {
 
 @media (max-width: 500px){
     .imageClass{
-        max-width: 450px;
-        max-height: 450px;
+        max-width: 350px;
+        max-height: 350px;
     }
     .inputClass {
+        margin-top: 64px;
         padding: 16px 64px;
         font-size: 16px;
     }
     .backBtn {
+        margin-top: 100px;
         padding: 12px;
         font-size: 26
+    }
+    h1 {
+        font-size: 24px;
+        color: white;
+        font-family: sans-serif;
+        justify-content: center;
     }
 }
