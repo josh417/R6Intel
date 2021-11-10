@@ -1,0 +1,149 @@
+* {
+    background-color: rgb(63, 62, 62);
+}
+
+
+h1 {
+    display: flex;
+    color: white;
+    justify-content: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: unset;
+    margin-top: 2px;
+    font-size: 64px;
+    text-shadow: 3px 3px 0px rgb(31, 31, 31);
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    margin-top: 20%;
+    margin-left: 60px;
+    margin-right: 60px;
+    background-color: rgb(47, 47, 47);
+    padding: 150px;
+    size: 20px;
+    border-radius: 20px;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    transition: all 0.2s;;
+}
+
+/* This is adjusting the background image for the specific boxes*/
+#mapbox {
+    background-image: url("mapopacityon.png");
+}
+#mapbox:hover {
+    opacity: 100%;
+    transition: all 0.2s;
+    background-image: url("mapopacityoff.png");
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+#operatorbox {
+    background-image: url("operatoropacityon.png")
+}
+
+#operatorbox:hover {
+    opacity: 100%;
+    transition: all 0.2s;
+    background-image: url("operatoropacityoff.png");
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+#soundsbox {
+    background-image: url("soundsopacityon.png")
+}
+
+#soundsbox:hover {
+    opacity: 100%;
+    background-image: url("soundsopacityoff.png");
+    cursor: pointer;
+    transition: 0.2s;
+    transform: scale(1.03);
+}
+
+#triviabox {
+    background-image: url("triviaopacityon.png");
+}
+
+#triviabox:hover {
+    opacity: 100%;
+    transition: all 0.2s;
+    background-image: url("triviaopacityoff.png");
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+
+.box-text {
+    text-overflow: unset;
+    display: flex;
+    background-color: transparent;
+    color: white;
+    opacity: 100%;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 64px;
+    z-index: 999;
+    text-shadow: 5px 5px 6px rgb(49, 49, 49);
+}
+
+@media only screen and (max-width: 2200px){
+    
+    h1 {
+        margin-top: 1%;
+        font-size: 64px;
+    }
+    .box-container {
+        margin-top: -80px;
+        display: flex;
+        margin-right: unset;
+        margin-left: unset;
+        overflow: hidden;
+    }
+    .box {
+        padding: 140px;
+        size: 20px;
+        justify-content: center;
+        
+    }
+    .box-text {
+        font-size: 44px;
+        text-align: center;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 1030px){
+    
+    h1 {
+        margin-top: 7%;
+        font-size: 36px;
+    }
+    .box-container {
+        display: grid;
+        margin-right: unset;
+        margin-left: unset;
+        overflow: hidden;
+    }
+    .box {
+        padding: 90px;
+        size: 100px;
+        justify-content: center;
+        
+    }
+    .box-text {
+        font-size: 32px;
+        text-align: center;
+    }
+}
